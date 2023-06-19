@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using NUnit.Framework;
-using VectorEnumerator;
+using VectorizedSpans;
 
 namespace Testing;
 

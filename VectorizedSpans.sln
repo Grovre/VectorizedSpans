@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorizedSpans", "Vectoriz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{E64CA639-DD09-4027-B03F-12E5B9A1DF1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64CA639-DD09-4027-B03F-12E5B9A1DF1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64CA639-DD09-4027-B03F-12E5B9A1DF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64CA639-DD09-4027-B03F-12E5B9A1DF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64CA639-DD09-4027-B03F-12E5B9A1DF1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

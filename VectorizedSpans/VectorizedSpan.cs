@@ -1,17 +1,19 @@
 ﻿using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace VectorEnumerator;
+namespace VectorizedSpans;
 
 public readonly ref struct VectorizedSpan<T>
     where T : unmanaged
 {
     public readonly Span<T> Span;
-    public Span<T> Leftovers => Span[^(Span.Length % Vector<T>.Count)..];
+    public Span<T> Leftovers => Span[LeftoversIndex..];
+    public int LeftoversIndex => Span.Length - (Span.Length % Vector<T>.Count);
 
     public static implicit operator Span<T>(VectorizedSpan<T> vspan) => vspan.Span;
     public static implicit operator VectorizedSpan<T>(Span<T> span) => new VectorizedSpan<T>(span);
     public static implicit operator VectorizedSpan<T>(T[] array) => new VectorizedSpan<T>(array.AsSpan());
+    public Span<T> this[Range range] => Span[range];
 
     public VectorizedSpan()
     {

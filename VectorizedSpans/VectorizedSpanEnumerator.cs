@@ -1,43 +1,44 @@
 ﻿using System.Numerics;
 
-namespace VectorEnumerator;
+namespace VectorizedSpans;
 public ref struct VectorizedSpanEnumerator<T>
     where T : unmanaged
 {
-    private readonly VectorizedSpan<T> _vspan;
-    private int _index;
+    public readonly VectorizedSpan<T> VSpan;
+    public int Index { get; private set; }
     private readonly Func<int, int> _indexIncrementer;
 
-    public readonly Vector<T> Current => _vspan.TryVectorAt(_index, out _);
-    public Span<T> Leftovers => _vspan.Leftovers;
+    public Vector<T> Current => VSpan.TryVectorAt(Index, out _);
+    public (Vector<T>, int) CurrentAndIndex => (Current, Index);
+    public Span<T> Leftovers => VSpan.Leftovers;
 
     public VectorizedSpanEnumerator()
     {
-        _vspan = new VectorizedSpan<T>(Span<T>.Empty);
-        _index = 0;
+        VSpan = new VectorizedSpan<T>(Span<T>.Empty);
+        Index = 0;
         _indexIncrementer = _ => 0;
     }
 
     public VectorizedSpanEnumerator(VectorizedSpan<T> span, Func<int, int> indexIncrementer)
     {
-        _vspan = span;
-        _index = -indexIncrementer(0);
+        VSpan = span;
+        Index = -indexIncrementer(0);
         _indexIncrementer = indexIncrementer;
     }
 
     public bool MoveNext()
     {
-        var i = _indexIncrementer(_index);
-        if (i < 0 || i > _vspan.Span.Length - Vector<T>.Count)
+        var i = _indexIncrementer(Index);
+        if (i < 0 || i > VSpan.Span.Length - Vector<T>.Count)
             return false;
 
-        _index = i;
+        Index = i;
         
         return true;
     }
 
     public void Reset()
     {
-        _index = 0;
+        Index = 0;
     }
 }
