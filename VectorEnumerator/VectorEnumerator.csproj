@@ -5,6 +5,17 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>11</LangVersion>
+
+        <PackageId>VectorizedSpans</PackageId>
+        <Version>1.0</Version>
+        <Authors>Grovre</Authors>
+        <PackageReadmeFile>../README.md</PackageReadmeFile>
+        <PackageLicenseFile>../LICENSE.txt</PackageLicenseFile>
+        <Copyright>MIT</Copyright>
+        <Description>A very lightweight library that lets developers enumerate spans with SIMD advantages</Description>
+        <RepositoryType>Github</RepositoryType>
+        <RepositoryUrl>https://github.com/Grovre/VectorEnumerator</RepositoryUrl>
+        <PackageTags>simd;vectors;lightweight</PackageTags>
     </PropertyGroup>
 
 </Project>
