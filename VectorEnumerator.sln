@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorEnumerator", "VectorEnumerator\VectorEnumerator.csproj", "{5DAD49B3-88A6-4E8A-B479-B34184AB0F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DAD49B3-88A6-4E8A-B479-B34184AB0F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DAD49B3-88A6-4E8A-B479-B34184AB0F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DAD49B3-88A6-4E8A-B479-B34184AB0F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DAD49B3-88A6-4E8A-B479-B34184AB0F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEDB56A-15C0-484D-A52B-E2004D99EF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
