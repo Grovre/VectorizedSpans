@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VectorEnumerator\VectorEnumerator.csproj" />
+      <ProjectReference Include="..\VectorizedSpans\VectorizedSpans.csproj" />
     </ItemGroup>
 
 </Project>
