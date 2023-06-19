@@ -84,7 +84,7 @@ public class VectorizationTests
 
         for (var i = 0; i < Vector<int>.Count - 1; i++)
         {
-            var v = vspan.TryVectorAt(Numbers.Length - i, out var s);
+            vspan.TryVectorAt(Numbers.Length - i, out var s);
             Assert.False(s);
         }
 
@@ -92,7 +92,7 @@ public class VectorizationTests
         var block = 0;
         for (; block < blocks; block++)
         {
-            var v = vspan.TryNthVector(block, out var s);
+            vspan.TryNthVector(block, out var s);
             Assert.True(s);
         }
 
