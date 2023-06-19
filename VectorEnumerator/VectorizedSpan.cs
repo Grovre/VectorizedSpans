@@ -3,11 +3,15 @@ using System.Runtime.CompilerServices;
 
 namespace VectorEnumerator;
 
-public ref struct VectorizedSpan<T>
+public readonly ref struct VectorizedSpan<T>
     where T : unmanaged
 {
-    public Span<T> Span { get; }
+    public readonly Span<T> Span;
     public Span<T> Leftovers => Span[^(Span.Length % Vector<T>.Count)..];
+
+    public static implicit operator Span<T>(VectorizedSpan<T> vspan) => vspan.Span;
+    public static implicit operator VectorizedSpan<T>(Span<T> span) => new VectorizedSpan<T>(span);
+    public static implicit operator VectorizedSpan<T>(T[] array) => new VectorizedSpan<T>(array.AsSpan());
 
     public VectorizedSpan()
     {
