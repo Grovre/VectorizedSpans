@@ -65,6 +65,38 @@ public class VectorizationTests
     [Test]
     public void VectorizedSpanTests()
     {
-        
+        VectorizedSpan<int> vspan = Numbers;
+        var index = -1;
+        var rand = new Random();
+
+        var expected = new int[Vector<int>.Count];
+        var actual = new int[Vector<int>.Count];
+        for (var i = 0; i < 100; i++)
+        {
+            index = rand.Next(0, Numbers.Length - Vector<int>.Count);
+            var v = vspan.TryVectorAt(index, out var succeeded);
+            Assert.True(succeeded);
+            Numbers.AsSpan(index, Vector<int>.Count).CopyTo(expected);
+            v.TryCopyTo(actual);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        for (var i = 0; i < Vector<int>.Count - 1; i++)
+        {
+            var v = vspan.TryVectorAt(Numbers.Length - i, out var s);
+            Assert.False(s);
+        }
+
+        var blocks = Numbers.Length / Vector<int>.Count;
+        var block = 0;
+        for (; block < blocks; block++)
+        {
+            var v = vspan.TryNthVector(block, out var s);
+            Assert.True(s);
+        }
+
+        vspan.TryNthVector(block, out var suc);
+        Assert.False(suc);
     }
 }
