@@ -23,18 +23,16 @@ public class VectorizationTests
     public void VectorizedSpanEnumeratorTest()
     {
         var copyList = new List<int>();
-        int Incrementer(int z) => z + Vector<int>.Count;
-        var enumerator = new VectorizedSpanEnumerator<int>(Numbers, Incrementer);
-        while (enumerator.MoveNext())
+        var vspan = new VectorizedSpan<int>(Numbers);
+        foreach (var v in vspan)
         {
-            var v = enumerator.Current;
             for (var i = 0; i < Vector<int>.Count; i++)
             {
                 copyList.Add(v[i]);
             }
         }
 
-        foreach (var n in enumerator.Leftovers)
+        foreach (var n in vspan.Leftovers)
         {
             copyList.Add(n);
         }
@@ -47,21 +45,26 @@ public class VectorizationTests
     {
         var copyList = new List<int>();
         int Incrementer(int z) => z + Vector<int>.Count;
-        var enumerator = new VectorizedSpanEnumerator<int>(Span<int>.Empty, Incrementer);
-        while (enumerator.MoveNext())
+        var vspan = new VectorizedSpan<int>(Span<int>.Empty);
+        foreach (var v in vspan)
         {
-            var v = enumerator.Current;
             for (var i = 0; i < Vector<int>.Count; i++)
             {
                 copyList.Add(v[i]);
             }
         }
-        
-        foreach (var n in enumerator.Leftovers)
+
+        foreach (var n in vspan.Leftovers)
         {
             copyList.Add(n);
         }
 
         Assert.AreEqual(Array.Empty<int>(), copyList.ToArray());
+    }
+
+    [Test]
+    public void VectorizedSpanTests()
+    {
+        
     }
 }

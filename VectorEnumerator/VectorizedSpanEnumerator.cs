@@ -4,23 +4,23 @@ namespace VectorEnumerator;
 public ref struct VectorizedSpanEnumerator<T>
     where T : unmanaged
 {
-    private readonly Span<T> _span;
+    private readonly VectorizedSpan<T> _vspan;
     private int _index;
     private readonly Func<int, int> _indexIncrementer;
 
-    public Vector<T> Current => new Vector<T>(_span[_index..]);
-    public Span<T> Leftovers => _span[^(_span.Length % Vector<T>.Count)..];
+    public readonly Vector<T> Current => _vspan.TryVectorAt(_index, out _);
+    public Span<T> Leftovers => _vspan.Leftovers;
 
     public VectorizedSpanEnumerator()
     {
-        _span = Span<T>.Empty;
+        _vspan = new VectorizedSpan<T>(Span<T>.Empty);
         _index = 0;
         _indexIncrementer = _ => 0;
     }
 
-    public VectorizedSpanEnumerator(Span<T> span, Func<int, int> indexIncrementer)
+    public VectorizedSpanEnumerator(VectorizedSpan<T> span, Func<int, int> indexIncrementer)
     {
-        _span = span;
+        _vspan = span;
         _index = -indexIncrementer(0);
         _indexIncrementer = indexIncrementer;
     }
@@ -28,7 +28,7 @@ public ref struct VectorizedSpanEnumerator<T>
     public bool MoveNext()
     {
         var i = _indexIncrementer(_index);
-        if (i < 0 || i > _span.Length - Vector<T>.Count)
+        if (i < 0 || i > _vspan.Span.Length - Vector<T>.Count)
             return false;
 
         _index = i;
