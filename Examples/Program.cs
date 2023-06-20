@@ -7,7 +7,3 @@ Console.WriteLine($"{numbers.Sum()} == {sum}\n");
 
 Examples.Examples.NegativeIsolation(numbers);
 Console.WriteLine(string.Join(", ", numbers));
-
-var v1 = new Vector<int>(-500);
-var v2 = new Vector<int>(500);
-Console.WriteLine(Vector.GreaterThan(v1, v2));

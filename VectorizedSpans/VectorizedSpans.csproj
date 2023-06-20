@@ -12,7 +12,7 @@
         <PackageReadmeFile>../README.md</PackageReadmeFile>
         <PackageLicenseFile>../LICENSE.txt</PackageLicenseFile>
         <Copyright>MIT</Copyright>
-        <Description>A very lightweight library that lets developers enumerate spans with SIMD advantages</Description>
+        <Description>A very lightweight library that lets developers enumerate spans with SIMD acceleration</Description>
         <RepositoryType>Github</RepositoryType>
         <RepositoryUrl>https://github.com/Grovre/VectorEnumerator</RepositoryUrl>
         <PackageTags>simd;vectors;lightweight</PackageTags>
