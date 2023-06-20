@@ -9,13 +9,17 @@
         <PackageId>VectorizedSpans</PackageId>
         <Version>1.0</Version>
         <Authors>Grovre</Authors>
-        <PackageReadmeFile>../README.md</PackageReadmeFile>
-        <PackageLicenseFile>../LICENSE.txt</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <Copyright>MIT</Copyright>
         <Description>A very lightweight library that lets developers enumerate spans with SIMD acceleration</Description>
         <RepositoryType>Github</RepositoryType>
-        <RepositoryUrl>https://github.com/Grovre/VectorEnumerator</RepositoryUrl>
+        <RepositoryUrl>https://github.com/Grovre/VectorizedSpans</RepositoryUrl>
         <PackageTags>simd;vectors;lightweight</PackageTags>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="../LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+        <None Include="../README.md" Pack="true" PackagePath="README.md" />
+    </ItemGroup>
 </Project>
