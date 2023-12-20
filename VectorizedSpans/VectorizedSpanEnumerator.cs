@@ -8,7 +8,7 @@ public ref struct VectorizedSpanEnumerator<T>
     public int Index { get; private set; }
     private readonly Func<int, int> _indexIncrementer;
 
-    public Vector<T> Current => VSpan.TryVectorAt(Index, out _);
+    public Vector<T> Current => VSpan.VectorAt(Index);
     public (Vector<T>, int) CurrentAndIndex => (Current, Index);
     public Span<T> Leftovers => VSpan.Leftovers;
 

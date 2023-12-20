@@ -74,7 +74,7 @@ public class VectorizationTests
         for (var i = 0; i < 100; i++)
         {
             index = rand.Next(0, Numbers.Length - Vector<int>.Count);
-            var v = vspan.TryVectorAt(index, out var succeeded);
+            var succeeded = vspan.TryVectorAt(index, out var v);
             Assert.True(succeeded);
             Numbers.AsSpan(index, Vector<int>.Count).CopyTo(expected);
             v.TryCopyTo(actual);
@@ -84,7 +84,7 @@ public class VectorizationTests
 
         for (var i = 0; i < Vector<int>.Count - 1; i++)
         {
-            vspan.TryVectorAt(Numbers.Length - i, out var s);
+            var s = vspan.TryVectorAt(Numbers.Length - i, out _);
             Assert.False(s);
         }
 

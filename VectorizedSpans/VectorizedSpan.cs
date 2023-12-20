@@ -25,21 +25,25 @@ public readonly ref struct VectorizedSpan<T>
         Span = span;
     }
 
-    public Vector<T> TryVectorAt(int index, out bool succeeded)
+    public bool TryVectorAt(int index, out Vector<T> v)
     {
-        var v = Vector<T>.Zero;
+        v = Vector<T>.Zero;
         
         if (TooLarge(index))
-        {
-            succeeded = false;
-            return v;
-        }
+            return false;
 
         v = new Vector<T>(Span[index..]);
-        succeeded = true;
-        
+        return true;
+    }
+
+    public Vector<T> VectorAt(int index)
+    {
+        VectorAt(index, out var v);
         return v;
     }
+
+    public void VectorAt(int index, out Vector<T> v)
+        => v = new Vector<T>(Span[index..]);
 
     public Vector<T> TryNthVector(int n, out bool succeeded)
     {
